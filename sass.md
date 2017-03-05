@@ -5,4 +5,16 @@ Sass有两种语法。最新的Sass语法（Sass3）被叫做SCSS（Sassy CSS）
 第二种语法被叫做缩进语法（indented syntax），或者我们可以直接叫它Sass。受Halm（一种用来描述任何XHTML网络文档的标记语言，它是干净、简单的）的简洁影响，对于那些喜欢简洁的人来说，Sass是一个更好的选择（该句意译，不准确，待改进）。Sass使用命令行的缩进来指定块，而不是用括号和分号（CSS）。尽管目前它已经不是SASS的主要语法，缩进语法仍将继续被SASS所支持。缩进语法使用的扩展名为.sass。<br>
 使用方法
 ----
+Sass可以从命令行或者被当做web框架的一部分来使用。第一步要先安装gem：<br>
+```Bash
+gem install sass
+```
+在你将一些CSS转换成Sass之后，你可以运行<br>
+```bash
+sass style.scss
+```
+来将它重新编译回CSS。如果需要获得更多的命令信息，你可以键入<br>
+```bash
+sass --help
+```
 

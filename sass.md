@@ -17,4 +17,16 @@ sass style.scss
 ```bash
 sass --help
 ```
+如果要在Rails2中安装Sass，仅需要添加`config.gem "sass"`到`config/environment.rb`。在Rails3中，需要添加`gem "sass"`到你的Gemfile中。`.sass`或者`.scss`文件应该放在`public/stylesheet/sass`中，这样当需要的时候它们会自动将`public/stylesheet`中的文件编译成相应的CSS文件（Sass的模板目录是可定义的，详情见[the Sass reference](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#template_location-option)）。<br>
+Sass同样可以再任何使用机架（Rack-enabled）的web框架中使用，仅需要添加<br>
+```
+require 'sass/plugin/rack'
+use Sass::Plugin::Rack
+```
+到`config.ru`。然后对于所有的请求，`public/stylesheet/sass`中的Sass文件都会被编译成相应的CSS文件到`public/stylesheets`中。<br>
+要程序化的使用Sass，可以参考[YARD documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#using_sass)。
+格式化
+----
+
+
 

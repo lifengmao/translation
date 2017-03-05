@@ -27,6 +27,82 @@ use Sass::Plugin::Rack
 要程序化的使用Sass，可以参考[YARD documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#using_sass)。
 格式化
 ----
+Sass是在CSS这一基础语言上添加了力量和优雅。它允许你使用[变量](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variables_)、[嵌套规则](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#nested_rules)、[mixin](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins)、[内联导入](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#import)等等，这些都与CSS完全兼容。在[Compass style library](http://compass-style.org/)的帮助下，Sass有助于大型样式表保持组织良好，获得小的样式表并快速运行。<br>
+Sass有两种语法，其中Scss与CSS完全兼容，另一种语法Sass是对空白敏感并且基于缩进的。要想获得更多关于这两种语法的信息，可以参考[相关文档](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#syntax)。<br>
+为了运行接下来的例子并且观察产生的CSS文件，我们可以将它们放在一个叫做`test.scss`的文件中，然后运行`sass test.scss`。
+###嵌套
+Sass通过嵌套选择器来避免重复。这对于属性来说同样适用。
+```sass
+table.h1 {
+	margin: 2em 0;
+	td.ln {text-align: right; }
+}
+li {
+	font: {
+	family: serif;
+	weight: bold;
+	size: 1.2em;
+	}
+}
+```
+###变量
+对所有的地方适用相同的颜色？需要对一些高度、宽度和文本尺寸进行一些数学计算？Sass支持变量、数学运算符和很多有用的函数。
+```sass
+$blue: #3bbfce;
+$margin: 16px;
+
+.content_navigation {
+	border-color: $blue;
+	color: darken($blue,10%);
+}
+
+.border {
+	padding: $margin/2;
+	margin: $margin/2;
+	border-color: $blue;
+}
+```
+###Mixins
+相比于变量，Mixins拥有更强大的力量，它允许你重复使用整个CSS、属性或者选择的块。你甚至可以给它们参数。
+```sass
+@mixin table-scaffolding {
+	th {
+	text-align: center;
+	font-weight: bold;
+	}
+	td,th { padding: 2px;}
+}
+
+@mixin left($dlist) {
+	float: left;
+	margin-left: $dlist;
+}
+
+#data {
+	@include left(10px);
+	@include table-scaffolding;
+}
+```
+[Sass参考](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)中提供了完整的功能列表
+
+可执行文件
+----
+Sass gem中包含了几个可执行文件，它们有助于从命令行处理Sass
+###`sass`
+`sass`执行文件可以将一个Sass源文件转换为CSS文件。键入`sass --help`可以获得更多的信息和选项
+###`sass-convert`
+该文件可以在CSS、Sass和SCSS中进行转换。当从CSS转换为Sass或者SCSS时，嵌套规则将在适当的时候被应用。键入`sass-convert --help`可以获得更多信息和选项。
+###本地运行
+```bash
+$ cd sass
+$ bundle
+$ bundle exec sass ...
+$ bundle exec scss ...
+$ bundle exec sass-convert ...
+```
+作者
+----
+不翻译了
 
 
 
